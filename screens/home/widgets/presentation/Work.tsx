@@ -35,7 +35,6 @@ const Work = () => {
   const [showAll, setShowAll] = useState(false);
   const [viewType, setViewType] = useState<"pinned" | "all">("pinned");
 
-  // Fetch pinned repos and contributions on initial load
   useEffect(() => {
     const fetchInitialData = async () => {
       setFetching(true);
@@ -55,7 +54,6 @@ const Work = () => {
     fetchInitialData();
   }, []);
 
-  // Fetch all repositories when switching to 'all' view
   useEffect(() => {
     if (viewType === "all" && allRepositories.length === 0) {
       const fetchAllRepos = async () => {
