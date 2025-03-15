@@ -17,13 +17,10 @@ const FooterTime = () => {
             setTime(kenyaTime);
         };
 
-        // Update time immediately
         updateTime();
-        
-        // Update time every second
+
         const interval = setInterval(updateTime, 1000);
 
-        // Cleanup interval on component unmount
         return () => clearInterval(interval);
     }, []);
 
