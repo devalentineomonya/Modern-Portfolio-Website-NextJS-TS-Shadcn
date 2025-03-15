@@ -13,7 +13,6 @@ interface ContributionHeatmapProps {
 }
 
 const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ data }) => {
-  // Format date for tooltip
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString("en-US", {
@@ -23,7 +22,6 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ data }) => {
     });
   };
 
-  // Get month labels
   const monthLabels = useMemo(() => {
     if (!data) return [];
 
@@ -40,7 +38,6 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ data }) => {
     return months;
   }, [data]);
 
-  // Get sample colors for the legend
   const legendColors = useMemo(() => {
     const uniqueColors = new Set(
       data?.weeks.flatMap((week) =>
@@ -83,7 +80,7 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ data }) => {
             <div className="inline-grid grid-flow-col gap-1 min-w-full px-4 py-2">
               {data
                 ? data.weeks.map((week, weekIndex) => (
-                    <div key={weekIndex} className="grid grid-rows-7 gap-1"> 
+                    <div key={weekIndex} className="grid grid-rows-7 gap-1">
                       {week.contributionDays.map((day) => (
                         <Tooltip key={day.date}>
                           <TooltipTrigger>
